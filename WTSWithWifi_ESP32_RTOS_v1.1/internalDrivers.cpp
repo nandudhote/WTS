@@ -139,9 +139,9 @@ void internalDrivers::buzzerBeep(bool state) {
 
 String internalDrivers::publishingDataFormat() {
   publishData = "";
-  for (int i = 0; i < maxSensors; i++) {
+  for (int i = 0; i < activeSensor; i++) {
     publishData += String(temperatures[i]);
-    if (i < maxSensors - 1) {
+    if (i < activeSensor - 1) {
       publishData += ":";
     }
     delay(1);
