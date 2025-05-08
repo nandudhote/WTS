@@ -92,9 +92,9 @@ void internalDrivers::checkIfSensorValueOverThresholdAndGenerateAlert() {
       alertFlag = true;  // Found one sensor above threshold.
       break;             // No need to check more, break the loop.
     }
+    delay(1);  // Small delay
   }
   buzzerBeep(alertFlag && buzzerBeepFlag);  // Turn buzzer ON only if alert is true and buzzerBeepFlag is true.
-  delay(1);                                 // Small delay
 }
 
 void internalDrivers::checkIfSensorValueOverThresholdAndGenerateBoth() {
@@ -102,11 +102,11 @@ void internalDrivers::checkIfSensorValueOverThresholdAndGenerateBoth() {
   for (int i = 0; i < activeSensor; i++) {
     if (temperatures[i] > secondThresholdTempForAlert) {
       maxTempAlertFlag = true;
+      buzzerBeep(maxTempAlertFlag);  // Always ON if max threshold crossed
       break;
     }
+    delay(1);
   }
-  buzzerBeep(maxTempAlertFlag);  // Always ON if max threshold crossed
-  delay(1);
 }
 
 
